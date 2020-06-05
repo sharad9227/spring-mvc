@@ -13,7 +13,7 @@ public class StudentRegistrationEntity {
     private String password;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id",updatable = false,nullable = false)
     public int getId() {
         return id;

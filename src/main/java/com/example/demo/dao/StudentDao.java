@@ -3,6 +3,7 @@ package com.example.demo.dao;
 
 
 
+import com.example.demo.bean.StudentBean;
 import com.example.demo.entities.StudentEntity;
 import com.example.demo.entities.StudentRegistrationEntity;
 
@@ -11,6 +12,7 @@ import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -65,8 +67,17 @@ public  class StudentDao implements StudentDaoInterface{
     {
 
         try {
-            Session session = this.sessionFactory.getCurrentSession();
-            session.persist(registerStudent);
+            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("persistence");
+           //Session session = this.sessionFactory.getCurrentSession();
+            EntityManager em = entityManagerFactory.createEntityManager();
+            // create new todo
+            em.getTransaction().begin();
+
+            em.persist(registerStudent);
+            em.getTransaction().commit();
+
+            em.close();
+
             logger.info("Person saved successfully, Person Details=" + registerStudent);
         }
 
@@ -77,7 +88,7 @@ public  class StudentDao implements StudentDaoInterface{
     }
 
 
-    public boolean checkLogin(StudentRegistrationEntity validStudent) {
+    public boolean checkLogin(StudentBean validStudent) {
         return false;
     }
 

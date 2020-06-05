@@ -1,4 +1,5 @@
 package com.example.demo.dao;
+import com.example.demo.bean.StudentBean;
 import com.example.demo.entities.StudentEntity;
 import com.example.demo.entities.StudentRegistrationEntity;
 import org.springframework.stereotype.Repository;
@@ -19,7 +20,7 @@ public interface StudentDaoInterface {
 
         void registerStudent(StudentRegistrationEntity studentReg);
         //checking login
-        boolean checkLogin(StudentRegistrationEntity validStudent);
+        boolean checkLogin(StudentBean validStudent);
 
 
 

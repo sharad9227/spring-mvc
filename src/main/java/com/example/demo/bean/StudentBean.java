@@ -8,13 +8,9 @@ public class StudentBean {
 
     private String email;
     private String password;
-    private String registeredFlag;
 
 
-    StudentBean(String registeredStudent)
-    {
-        this.registeredFlag=registeredStudent;
-    }
+
 
     public String getFirstName() {
         return firstName;

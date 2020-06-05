@@ -27,11 +27,11 @@ public class StudentController
 
 
 
-    @Qualifier("studentServiceImpl")
+
     @Autowired
     private StudentServiceImpl studentServiceInterface;
-    @Autowired
-    private StudentDao studentDao;
+
+
 
     @Qualifier("clientService")
     public void setStudentService(StudentServiceImpl studentServiceInterface){
@@ -54,16 +54,16 @@ public class StudentController
 
 
     @RequestMapping(value = "/register",method = RequestMethod.POST)
-    public ResponseEntity registerStudent(@RequestBody StudentBean requestUserDetails){
+    public ResponseEntity registerStudent(@RequestBody StudentRegistrationEntity requestUserDetails){
 
 
-        StudentRegistrationEntity student=new StudentRegistrationEntity();
-        student.setEmailId(requestUserDetails.getEmail());
-        student.setFullName(requestUserDetails.getFullName());
-        student.setEmailId(requestUserDetails.getEmail());
+        StudentRegistrationEntity stud =new StudentRegistrationEntity();
+        stud.setPassword(requestUserDetails.getPassword());
+        stud.setEmailId(requestUserDetails.getEmailId());
+        stud.setFullName(requestUserDetails.getFullName());
 
 
-        studentServiceInterface.registerStudent(student);
+        studentServiceInterface.registerStudent(stud);
         return new ResponseEntity(HttpStatus.OK);
 
 
